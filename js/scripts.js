@@ -1,8 +1,8 @@
-//Javascript from Exercise 1.1 Full Stack Imersion
 
-
-alert('Hello There');   // creates a popup message on page load that displays message 'Hello There'
-
-let favoriteFood = 'Steak'   // creates variable named favoriteFood and assigns it the value Steak
-document.write(favoriteFood);   //displays contents of variable named favoriteFood on page
+/* create an array with with three objects with 3 variables*/
+let pokemonList = [
+    {name: 'Bulbasaur', height: '0.7', type: 'poison'}, //variable name, height, and type with values of Bulbasaur, 0.7, and poison
+    {name: 'Charmander', height: '0.6', type: 'fire'},
+    {name: 'Squirtle', height: '0.5', type: "water"},
+];
 
