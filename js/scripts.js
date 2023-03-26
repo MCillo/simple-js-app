@@ -141,9 +141,9 @@ My Project Code
 // console.log(pokemonRepository.getAll());
 
 
-// wrapping the pokemon array and functions into an IIFE part 2 defining functions inside IIFE using function keywords and returning only key-value pairs
+// // wrapping the pokemon array and functions into an IIFE part 2 defining functions inside IIFE using function keywords and returning only key-value pairs
 let pokemonRepository = (function () {
-    let pokemonList = [
+    let pokemonArray = [
         { name: "Bulbasaur", height: "2.7", type: "poison" }, //variable name, height, and type with values of Bulbasaur, 0.7, and poison
         { name: "Charmander", height: "1.6", type: "fire" },
         { name: "Squirtle", height: "1.5", type: "water" },
@@ -151,12 +151,12 @@ let pokemonRepository = (function () {
 
     // defining the add function inside the IIFE
     function add(pokemon) {
-        pokemonList.push(pokemon);
+        pokemonArray.push(pokemon);
     }
 
     // defining the getAll function inside the IIFE
     function getAll() {
-        return pokemonList;
+        return pokemonArray;
     }
 
     // return only key-value pairs
@@ -170,12 +170,13 @@ let pokemonRepository = (function () {
 // using a forEach() funcition instead of the for loop in lines 11-43 above
 pokemonRepository.getAll().forEach(function (pokemon) {
     console.log(pokemon.name + ' weighs ' + pokemon.height + ' and is ' + pokemon.type + ' type.'); // will write to the console log
-    document.write(pokemon.name + ' weighs ' + pokemon.height + ' and is ' + pokemon.type + ' type. <br>');  // will write to the html document
+    //document.write(pokemon.name + ' weighs ' + pokemon.height + ' and is ' + pokemon.type + ' type. <br>');  // will write to the html document
+    let pokedex = document.querySelector('.pokemon-list');
 });
 
 // // a cleaner way to write the forEach() function
 // function pokemonForEachLoop(pokemon) {
-//   console.log(pokemon.name + ' weighs ' + pokemon.height + ' and is ' + pokemon.type + ' type.');
+//     console.log(pokemon.name + ' weighs ' + pokemon.height + ' and is ' + pokemon.type + ' type.');
 // }
 // pokemonList.forEach(pokemonForEachLoop);
 
