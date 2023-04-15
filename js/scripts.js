@@ -4,7 +4,7 @@
 let pokemonRepository = (function () {
     let pokemonArray = [];  // empty array to hold the objects returned from the loadList function
     // url for pokemon api stored in a variable
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=100';
 
     // defining the add function code to be able to add pokemon to the list
     function add(pokemon) {
@@ -25,11 +25,16 @@ let pokemonRepository = (function () {
     function addListItem(pokemon) {
 
         // creating variables for DOM manipulation
-        let pokemonList = document.querySelector('.pokemon-list'); //selects the <ul> node with class name pokemon-list
-        let pokemonListItem = document.createElement('li'); // creates an <li> node
+        //let pokemonList = document.querySelector('.pokemon-list'); //selects the <ul> node with class name pokemon-list
+        // seeing if i can make the pokemon list display as a grid instead of a list
+        let pokemonList = document.querySelector('.grid'); //selects the <div class = "grid">
+
+        let pokemonListItem = document.createElement('div'); // creates an <li> node
         let button = document.createElement('button'); // creates a button 
 
         // manipulating the nodes 
+        // let pokemonButtonText = pokemon.name;
+        // button.innerText = pokemonButtonText.toUppercase();
         button.innerText = pokemon.name; // assigns text to the created button
         button.classList.add('button');  // adds class name "button" to the created button
 
@@ -78,12 +83,17 @@ let pokemonRepository = (function () {
 
             // creating the element to display the pokemon height
             let heightElement = document.createElement('p');
-            heightElement.innerText = 'Height:' + (item.height);
+            heightElement.innerText = 'Height: ' + (item.height) + ' m';
+
+            // creating the element to display the pokemon type
+            let idElement = document.createElement('p');
+            idElement.innerText = 'ID # ' + (item.id);
 
             modal.appendChild(closeButtonElement);
             modal.appendChild(titleElement);
             modal.appendChild(pokemonImageElement);
             modal.appendChild(heightElement);
+            modal.appendChild(idElement);
             modalContainer.appendChild(modal);
 
             modalContainer.classList.add('is-visible');
@@ -145,6 +155,7 @@ let pokemonRepository = (function () {
             item.imageUrl = details.sprites.front_default;
             item.height = details.height;
             item.types = details.types;
+            item.id = details.id;
         }).catch(function (e) {
             console.error(e);
         });
