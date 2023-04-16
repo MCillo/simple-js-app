@@ -24,13 +24,6 @@ ul li {
     cursor: pointer;
 }
 
-/* style code to arrange pokemon buttons in a grid */
-.grid {
-    display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(4, auto);
-}
-
 @media all and (max-width: 500px) {
     .grid {
         grid-template-columns: 1fr;
