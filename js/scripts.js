@@ -4,7 +4,7 @@
 let pokemonRepository = (function () {
     let pokemonArray = [];  // empty array to hold the objects returned from the loadList function
     // url for pokemon api stored in a variable
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=100';
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=10';
 
     // defining the add function code to be able to add pokemon to the list
     function add(pokemon) {
@@ -29,14 +29,15 @@ let pokemonRepository = (function () {
         // // seeing if i can make the pokemon list display as a grid instead of a list
         // let pokemonList = document.querySelector('.grid'); //selects the <div class = "grid">
 
-        let pokemonListItem = document.createElement('div'); // creates an <li> node
+        let pokemonListItem = document.createElement('li'); // creates an <li> node
+        pokemonListItem.classList.add('list-group-item');
         let button = document.createElement('button'); // creates a button 
 
         // manipulating the nodes 
         // let pokemonButtonText = pokemon.name;
         // button.innerText = pokemonButtonText.toUppercase();
         button.innerText = pokemon.name; // assigns text to the created button
-        button.classList.add('button');  // adds class name "button" to the created button
+        button.classList.add('btn-primary');  // adds class name "button" to the created button
 
         pokemonListItem.appendChild(button);  // appends the created button to the created <li> node
         pokemonList.appendChild(pokemonListItem); // appends the <li> node to the <ul> node
@@ -67,10 +68,10 @@ let pokemonRepository = (function () {
             modal.classList.add('modal');
 
             // creating a button to close the modal
-            let closeButtonElement = document.createElement('button');
-            closeButtonElement.classList.add('modal-close');
-            closeButtonElement.innerText = 'Close';
-            closeButtonElement.addEventListener('click', hideModal);
+            // let closeButtonElement = document.createElement('button');
+            // closeButtonElement.classList.add('modal-close');
+            // closeButtonElement.innerText = 'Close';
+            // closeButtonElement.addEventListener('click', hideModal);
 
             //creating the element to display pokemon info on the modal
             let titleElement = document.createElement('h1');
@@ -180,4 +181,3 @@ pokemonRepository.loadList().then(function () {
         pokemonRepository.addListItem(pokemon);
     });
 })
-
