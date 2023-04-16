@@ -25,9 +25,9 @@ let pokemonRepository = (function () {
     function addListItem(pokemon) {
 
         // creating variables for DOM manipulation
-        //let pokemonList = document.querySelector('.pokemon-list'); //selects the <ul> node with class name pokemon-list
-        // seeing if i can make the pokemon list display as a grid instead of a list
-        let pokemonList = document.querySelector('.grid'); //selects the <div class = "grid">
+        let pokemonList = document.querySelector('.pokemon-list'); //selects the <ul> node with class name pokemon-list
+        // // seeing if i can make the pokemon list display as a grid instead of a list
+        // let pokemonList = document.querySelector('.grid'); //selects the <div class = "grid">
 
         let pokemonListItem = document.createElement('div'); // creates an <li> node
         let button = document.createElement('button'); // creates a button 
