@@ -33,6 +33,8 @@ let pokemonRepository = (function () {
 
         button.innerText = pokemon.name; // assigns text to the created button
         button.classList.add('btn-primary');  // adds class name "button" to the created button
+        button.setAttribute('data-toggle', 'modal');
+        button.setAttribute('data-target', '#exampleModal');
 
         pokemonListItem.appendChild(button);  // appends the created button to the created <li> node
         pokemonList.appendChild(pokemonListItem); // appends the <li> node to the <ul> node
@@ -51,33 +53,16 @@ let pokemonRepository = (function () {
             showModal(item);
         });
 
-        // creating a modal to house the pokemon info
-        // let modalContainer = document.querySelector('#pokemon-modal');
-
-        let modalContainer = document.querySelector('#exampleModal');
-        // creating a modal to display the selected pokemon information
+        // creating a modal function to display the selected pokemon information
         function showModal(item) {
 
-            // clear existing modal content
-            modalContainer.innerHTML = '';
-
-            let modal = document.createElement('div');
-            modal.classList.add('modal');
-
-            // creating a button to close the modal
-            // let closeButtonElement = document.createElement('button');
-            // closeButtonElement.classList.add('modal-close');
-            // closeButtonElement.innerText = 'Close';
-            // closeButtonElement.addEventListener('click', hideModal);
-
-            //creating the element to display pokemon info on the modal
-            let titleElement = document.createElement('h1');
+            //referencing the element to display pokemon info on the modal
+            let titleElement = document.querySelector('.modal-title');
             titleElement.innerText = item.name;
 
-            // creating the element to display the pokemon image
-            let pokemonImageElement = document.createElement('img');
+            // referencing the element to display the pokemon image
+            let pokemonImageElement = document.querySelector('.pokemonImage');
             pokemonImageElement.src = item.imageUrl;
-            pokemonImageElement.classList.add('pokemonImage');
 
             // creating the element to display the pokemon height
             let heightElement = document.createElement('p');
@@ -87,37 +72,10 @@ let pokemonRepository = (function () {
             let idElement = document.createElement('p');
             idElement.innerText = 'ID # ' + (item.id);
 
-            modal.appendChild(closeButtonElement);
-            modal.appendChild(titleElement);
-            modal.appendChild(pokemonImageElement);
-            modal.appendChild(heightElement);
-            modal.appendChild(idElement);
-            modalContainer.appendChild(modal);
+            modalBody.appendChild(heightElement);
+            modalBody.appendChild(idElement);
 
-            modalContainer.classList.add('is-visible');
         }
-
-        // function to hide the pokemon information modal
-        function hideModal() {
-            modalContainer.classList.remove('is-visible');
-        }
-
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-                hideModal();
-            }
-        });
-
-        modalContainer.addEventListener('click', (e) => {
-            let target = e.target;
-            if (target === modalContainer) {
-                hideModal();
-            }
-        });
-
-        // document.querySelector('button').addEventListener('click', () => {
-        //     showModal();
-        // });
     }
 
     // function to show a loading message
