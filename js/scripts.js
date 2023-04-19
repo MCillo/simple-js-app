@@ -26,16 +26,11 @@ let pokemonRepository = (function () {
 
         // creating variables for DOM manipulation
         let pokemonList = document.querySelector('.pokemon-list'); //selects the <ul> node with class name pokemon-list
-        // // seeing if i can make the pokemon list display as a grid instead of a list
-        // let pokemonList = document.querySelector('.grid'); //selects the <div class = "grid">
 
         let pokemonListItem = document.createElement('li'); // creates an <li> node
         pokemonListItem.classList.add('list-group-item');
         let button = document.createElement('button'); // creates a button 
 
-        // manipulating the nodes 
-        // let pokemonButtonText = pokemon.name;
-        // button.innerText = pokemonButtonText.toUppercase();
         button.innerText = pokemon.name; // assigns text to the created button
         button.classList.add('btn-primary');  // adds class name "button" to the created button
 
@@ -57,7 +52,9 @@ let pokemonRepository = (function () {
         });
 
         // creating a modal to house the pokemon info
-        let modalContainer = document.querySelector('#pokemon-modal');
+        // let modalContainer = document.querySelector('#pokemon-modal');
+
+        let modalContainer = document.querySelector('#exampleModal');
         // creating a modal to display the selected pokemon information
         function showModal(item) {
 
