@@ -56,21 +56,22 @@ let pokemonRepository = (function () {
         // creating a modal function to display the selected pokemon information
         function showModal(item) {
 
-            const modalBody = document.querySelector('.modalBody');
+            const modalBody = document.querySelector('.modal-body');
             //referencing the element to display pokemon info on the modal
             let titleElement = document.querySelector('.modal-title');
-            titleElement.innerText = `${item.name} ID # ${item.id}`;
+            // titleElement.innerText = `${item.name} ID # ${item.id}`;
+            titleElement.innerText = (item.name) + ' # ' + (item.id);
 
             // referencing the element to display the pokemon image
-            let pokemonImageElement = document.querySelector('.pokemonImage');
+            let pokemonImageElement = document.querySelector('.pokemon-image');
             pokemonImageElement.src = item.imageUrl;
 
             // creating the element to display the pokemon height
-            let heightElement = document.querySelector('.pokemonHeight');
+            let heightElement = document.querySelector('.pokemon-height');
             heightElement.innerText = 'Height: ' + (item.height) + ' m';
 
             // creating the element to display the pokemon height
-            let weightElement = document.querySelector('.pokemonWeight');
+            let weightElement = document.querySelector('.pokemon-weight');
             weightElement.innerText = 'Weight: ' + (item.weight) + ' kg';
 
         }
