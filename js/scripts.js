@@ -4,7 +4,7 @@
 let pokemonRepository = (function () {
     let pokemonArray = [];  // empty array to hold the objects returned from the loadList function
     // url for pokemon api stored in a variable
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=10';
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=1000';
 
     // defining the add function code to be able to add pokemon to the list
     function add(pokemon) {
@@ -56,33 +56,25 @@ let pokemonRepository = (function () {
         // creating a modal function to display the selected pokemon information
         function showModal(item) {
 
+            const modalBody = document.querySelector('.modalBody');
             //referencing the element to display pokemon info on the modal
             let titleElement = document.querySelector('.modal-title');
-            titleElement.innerText = item.name;
+            titleElement.innerText = `${item.name} ID # ${item.id}`;
 
             // referencing the element to display the pokemon image
             let pokemonImageElement = document.querySelector('.pokemonImage');
             pokemonImageElement.src = item.imageUrl;
 
             // creating the element to display the pokemon height
-            let heightElement = document.createElement('p');
+            let heightElement = document.querySelector('.pokemonHeight');
             heightElement.innerText = 'Height: ' + (item.height) + ' m';
 
-            // creating the element to display the pokemon type
-            let idElement = document.createElement('p');
-            idElement.innerText = 'ID # ' + (item.id);
-
-            modalBody.appendChild(heightElement);
-            modalBody.appendChild(idElement);
+            // creating the element to display the pokemon height
+            let weightElement = document.querySelector('.pokemonWeight');
+            weightElement.innerText = 'Weight: ' + (item.weight) + ' kg';
 
         }
     }
-
-    // function to show a loading message
-    // researching how to do this
-
-    // function to hide a loading message
-    // researching how to do this
 
     // function to load the list 
     function loadList() {
@@ -110,6 +102,7 @@ let pokemonRepository = (function () {
         }).then(function (details) {
             item.imageUrl = details.sprites.front_default;
             item.height = details.height;
+            item.weight = details.weight;
             item.types = details.types;
             item.id = details.id;
         }).catch(function (e) {
@@ -117,15 +110,35 @@ let pokemonRepository = (function () {
         });
     }
 
-    // return only key-value pairs
+    // Search function
+    let searchString = document.querySelector('#search-field');
+    searchString.addEventListener('input', function () {
+        pokemonRepository.searchPokemon(searchString);
+    });
+
+    function searchPokemon(searchString) {
+        let filterString = searchString.value.toLowerCase();
+
+        let filteredPokemon = pokemonArray.filter(function (pokemon) {
+            return pokemon.name.toLowerCase().indexOf(filterString) > -1;
+        });
+
+        let pokemonListElement = document.querySelector('.pokemon-list');
+        pokemonListElement.innerHTML = '';
+        filteredPokemon.forEach(function (pokemon) {
+            pokemonRepository.addListItem(pokemon);
+        });
+    }
+
+    // return only key: value pairs
     return {
-        add: add, //key = add, value = add
+        add: add,
         getAll: getAll,
         loadList: loadList,
         loadDetails: loadDetails,
         addListItem: addListItem,
         showDetails: showDetails,
-        //showModal: showModal,
+        searchPokemon: searchPokemon,
     };
 
 })();
