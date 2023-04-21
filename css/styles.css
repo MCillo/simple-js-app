@@ -1,31 +1,64 @@
+/* styling for pokedex page */
+
+.page-container {
+    margin-top: 60px;
+}
+
+body {
+    background-color: limegreen;
+    /* background: linear-gradient(0deg, white, black 50%, red); */
+    font-size: 14px;
+}
+
+.navbar {
+    border-bottom: 2px solid #000;
+}
+
 ul li {
     padding: 5px;
     margin-left: 5px;
 }
 
-/* css style for the list-group */
-/* .list-group-item {
-    width: 200px;
-    height: 50px;
-    border: 5px solid #000000;
-    border-radius: 25px;
-    background-color: red;
-    color: #222;
-    font-size: 22px;
-    padding: 10px 10px;
-    cursor: pointer;
-} */
 
-.btn-primary {
-    width: 100px;
-    border-radius: 10px;
-    border: 1px solid #000000;
+
+.pageTitle {
+    text-align: center;
 }
 
+.pokemon-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
 
-@media all and (max-width: 500px) {
+.btn-primary {
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    border: 2px solid #000;
+    text-transform: capitalize;
+}
+
+.list-group-item {
+    background-color: limegreen;
+    border: none;
+}
+
+.modal-dialog {
+    width: 500px;
+}
+
+.modal-content {
+    align-items: center;
+    border: 2px solid #000;
+}
+
+.modal-title {
+    text-transform: capitalize;
+}
+
+@media all and (max-width: 1080px) {
     .grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
