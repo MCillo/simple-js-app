@@ -1,17 +1,39 @@
 /* styling for pokedex page */
-
-.page-container {
-    margin-top: 60px;
+body {
+    font-size: 14px;
+    /* padding: 10px; */
+    margin: 10px;
+    align-items: center;
 }
 
-body {
-    background-color: limegreen;
-    /* background: linear-gradient(0deg, white, black 50%, red); */
-    font-size: 14px;
+h5 {
+    font-size: 32px;
+}
+
+p {
+    font-size: 18px;
+}
+
+span {
+    font-size: 40px;
+    color: red;
+}
+
+.page-container {
+    margin-top: 100px;
 }
 
 .navbar {
-    border-bottom: 2px solid #000;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.navbar-brand {
+    font-size: 42px;
+}
+
+.form-control {
+    border: 2px solid black;
 }
 
 ul li {
@@ -19,57 +41,73 @@ ul li {
     margin-left: 5px;
 }
 
-
-
 .pageTitle {
     text-align: center;
 }
 
 .pokemon-list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
 .btn-primary {
     width: 200px;
-    height: 50px;
-    border-radius: 10px;
-    border: 2px solid #000;
+    height: 200px;
+    border-radius: 200px;
+    border: 5px solid #000;
     text-transform: capitalize;
+    background: linear-gradient(0deg, white, black 50%, red);
+    font-size: 24px;
 }
 
 .list-group-item {
-    background-color: limegreen;
+    width: 100%;
+    height: auto;
     border: none;
+    padding: 5px;
 }
 
-.modal-dialog {
-    width: 500px;
-}
-
-.modal-content {
-    align-items: center;
-    border: 2px solid #000;
+.modal-header {
+    border: none;
 }
 
 .modal-title {
     text-transform: capitalize;
 }
 
-@media all and (max-width: 1080px) {
-    .grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
+.modal-body {
+    border: none;
 }
 
-@media all and (min-width: 500px) and (max-width: 750px) {
-    .grid {
-        grid-template-columns: 1fr 1fr;
-    }
+.modal-content {
+    width: 100%;
+    height: auto;
+    border-radius: 50px;
+    border: 5px solid #000;
+    align-items: center;
+    background: linear-gradient(0deg, white, black 50%, red);
+
+    color: white;
 }
 
-@media all and (max-width: 750px) {
-    .grid {
-        gap: 10px;
-    }
+.pokemon-image-container {
+    padding: 5px;
+    background: white;
+    border-radius: 25px;
+}
+
+.pokemon-image {
+    align-items: center;
+}
+
+.modal-footer {
+    border: none;
+}
+
+.pokemon-height {
+    margin: 10px 10px;
+}
+
+.pokemon-weight {
+    margin: 10px 10px;
 }
