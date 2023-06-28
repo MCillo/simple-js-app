@@ -4,7 +4,7 @@
 let pokemonRepository = (function () {
     let pokemonArray = [];  // empty array to hold the objects returned from the loadList function
     // url for pokemon api stored in a variable
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=1000';
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=500';
 
     // defining the add function code to be able to add pokemon to the list
     function add(pokemon) {
