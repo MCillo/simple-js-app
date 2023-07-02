@@ -1,9 +1,12 @@
 /* styling for pokedex page */
+
+
 body {
     font-size: 14px;
     /* padding: 10px; */
     margin: 10px;
     align-items: center;
+    /* background-color: blue; */
 }
 
 h5 {
@@ -11,7 +14,7 @@ h5 {
 }
 
 p {
-    font-size: 18px;
+    font-size: 28px;
 }
 
 span {
@@ -24,6 +27,7 @@ span {
 }
 
 .navbar {
+    /* background-color: inherit; */
     background-color: white;
     border: 2px solid black;
 }
@@ -58,56 +62,74 @@ ul li {
     text-transform: capitalize;
     background: linear-gradient(0deg, white, black 50%, red);
     font-size: 24px;
+    padding: 5px;
 }
 
 .list-group-item {
     width: 100%;
-    height: auto;
+    height: 100%;
     border: none;
     padding: 5px;
+    background-color: inherit;
+    /* margin: 5px; */
+    align-content: center;
 }
 
-.modal-header {
-    border: none;
+.modal {
+    display: none;
+    background: transparent;
+    color: #000;
 }
+
+.modal-content {
+    /* background-color: rgb(179, 167, 228); */
+    background: linear-gradient(0deg, rgb(179, 167, 228), white);
+}
+
+.modal-header {}
 
 .modal-title {
     text-transform: capitalize;
 }
 
-.modal-body {
-    border: none;
-}
+.modal-body {}
 
-.modal-content {
-    width: 100%;
-    height: auto;
-    border-radius: 50px;
-    border: 5px solid #000;
+.pokemon-image-container,
+.pokemon-data-container {
+    padding: 5%;
+    display: flex;
     align-items: center;
-    background: linear-gradient(0deg, white, black 50%, red);
-
-    color: white;
+    justify-content: center;
 }
 
-.pokemon-image-container {
-    padding: 5px;
-    background: white;
-    border-radius: 25px;
+.pokemon-image-window {
+    background: #000;
+    padding: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid #000;
 }
 
 .pokemon-image {
-    align-items: center;
+    width: 60%;
+}
+
+/* .pokemon-data-container {} */
+
+.pokemon-height,
+.pokemon-weight {
+    border: 1px solid black;
+    font-size: 1.2em;
+}
+
+.pokemon-types,
+.pokemon-abilities {
+    text-transform: capitalize;
+    font-size: 1.2em;
 }
 
 .modal-footer {
-    border: none;
-}
-
-.pokemon-height {
-    margin: 10px 10px;
-}
-
-.pokemon-weight {
-    margin: 10px 10px;
+    /* border: none; */
+    border: 1px solid black;
 }
