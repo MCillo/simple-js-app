@@ -4,7 +4,7 @@
 let pokemonRepository = (function () {
     let pokemonArray = [];  // empty array to hold the objects returned from the loadList function
     // url for pokemon api stored in a variable
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=500';
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=200';
 
     // defining the add function code to be able to add pokemon to the list
     function add(pokemon) {
@@ -44,7 +44,43 @@ let pokemonRepository = (function () {
         });
     }
 
+    // function to load the list 
+    function loadList() {
+        return fetch(apiUrl).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            json.results.forEach(function (item) {
+                let pokemon = {
+                    name: item.name,
+                    detailsUrl: item.url,
+                };
+                add(pokemon);
+                console.log(pokemon);
+            });
+        }).catch(function (e) {
+            console.error(e);
+        })
+    }
 
+    // function to load the "clicked" pokemon details
+    function loadDetails(item) {
+        let url = item.detailsUrl;
+        return fetch(url).then(function (response) {
+            return response.json();
+        }).then(function (details) {
+            // item.imageUrl = details.sprites.front_default;
+            item.imageUrl = details.sprites.other.dream_world.front_default
+            item.height = details.height;
+            item.weight = details.weight;
+            // item.type = details.types[0, 1].type.name;
+            item.type1 = details.types[0].type.name;
+            item.type2 = details.types[1].type.name;
+            item.id = details.id;
+
+        }).catch(function (e) {
+            console.error(e);
+        });
+    }
 
     // create a function to show the pokemon details
     function showDetails(item) {
@@ -74,41 +110,11 @@ let pokemonRepository = (function () {
             let weightElement = document.querySelector('.pokemon-weight');
             weightElement.innerText = 'Weight: ' + (item.weight) + ' kg';
 
+            // creating the element to display the pokemon type
+            let typeElement = document.querySelector('.pokemon-types');
+            // typeElement.innerText = 'Types: ' + (item.type);
+            typeElement.innerText = 'Types: ' + (item.type1) + ' & ' + (item.type2);
         }
-    }
-
-    // function to load the list 
-    function loadList() {
-        return fetch(apiUrl).then(function (response) {
-            return response.json();
-        }).then(function (json) {
-            json.results.forEach(function (item) {
-                let pokemon = {
-                    name: item.name,
-                    detailsUrl: item.url
-                };
-                add(pokemon);
-                console.log(pokemon);
-            });
-        }).catch(function (e) {
-            console.error(e);
-        })
-    }
-
-    // function to load the "clicked" pokemon details
-    function loadDetails(item) {
-        let url = item.detailsUrl;
-        return fetch(url).then(function (response) {
-            return response.json();
-        }).then(function (details) {
-            item.imageUrl = details.sprites.front_default;
-            item.height = details.height;
-            item.weight = details.weight;
-            item.types = details.types;
-            item.id = details.id;
-        }).catch(function (e) {
-            console.error(e);
-        });
     }
 
     // Search function
