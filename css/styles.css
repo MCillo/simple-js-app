@@ -65,6 +65,10 @@ ul li {
     padding: 5px;
 }
 
+.btn-primary:hover {
+  border-color: yellow;
+}
+
 .list-group-item {
     width: 100%;
     height: 100%;
